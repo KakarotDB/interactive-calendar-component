@@ -2,12 +2,19 @@
   width: 100%;
   height: 250px;
   background-color: var(--border-light);
-  /* Artistic, painted/organic aesthetic for the top of the physical calendar */
-  background-image: url('https://images.unsplash.com/photo-1578301978693-85fa9c026f43?w=1600&q=80');
-  background-size: cover;
-  background-position: center 30%;
   position: relative;
   overflow: hidden;
+}
+
+.heroImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  z-index: 1;
 }
 
 /* Torn paper edge mask at the bottom of the hero image */
@@ -36,6 +43,7 @@
   display: flex;
   align-items: flex-end;
   padding: 3.5rem 5rem;
+  z-index: 2;
 }
 
 .todayDate {
