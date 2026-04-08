@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { format, parseISO } from 'date-fns';
-import { Trash2 } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { format, parseISO, isWithinInterval } from 'date-fns';
+import { Trash2, Check } from 'lucide-react';
 import { CalendarState, CalendarAction } from '../types';
 import styles from './NotesPanel.module.css';
 
@@ -11,6 +11,7 @@ interface Props {
 
 export function NotesPanel({ state, dispatch }: Props) {
   const [text, setText] = useState('');
+  const [isSaving, setIsSaving] = useState(false);
 
   // 1. Determine what the user has currently selected.
   const hasSelection = state.startDate !== null;
@@ -34,16 +35,22 @@ export function NotesPanel({ state, dispatch }: Props) {
   const handleAddNote = () => {
     if (!text.trim() || !activeStart || !activeEnd) return;
     
-    dispatch({ 
-      type: 'ADD_NOTE', 
-      note: {
-        id: crypto.randomUUID(),
-        startStr: format(activeStart, 'yyyy-MM-dd'),
-        endStr: format(activeEnd, 'yyyy-MM-dd'),
-        text: text.trim()
-      }
-    });
-    setText(''); // clear input
+    setIsSaving(true);
+    
+    // Simulate a tiny network delay for tactile feedback
+    setTimeout(() => {
+      dispatch({ 
+        type: 'ADD_NOTE', 
+        note: {
+          id: crypto.randomUUID(),
+          startStr: format(activeStart, 'yyyy-MM-dd'),
+          endStr: format(activeEnd, 'yyyy-MM-dd'),
+          text: text.trim()
+        }
+      });
+      setText(''); // clear input
+      setIsSaving(false);
+    }, 400);
   };
 
   const handleRemove = (id: string) => {
@@ -76,11 +83,11 @@ export function NotesPanel({ state, dispatch }: Props) {
             />
             <div className={styles.actions}>
               <button 
-                className={styles.btnPrimary} 
+                className={`${styles.btnPrimary} ${isSaving ? styles.btnSuccess : ''}`}
                 onClick={handleAddNote}
-                disabled={!text.trim()}
+                disabled={!text.trim() || isSaving}
               >
-                Save Note
+                {isSaving ? <><Check size={18} style={{ marginRight: '6px', verticalAlign: 'middle' }}/> Saved</> : 'Save Note'}
               </button>
             </div>
           </div>
