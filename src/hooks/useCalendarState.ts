@@ -1,5 +1,5 @@
 import { useReducer, useEffect } from 'react';
-import { addMonths, subMonths, isBefore } from 'date-fns';
+import { addMonths, subMonths, isBefore, isSameDay } from 'date-fns';
 import { CalendarState, CalendarAction } from '../types';
 
 const getInitialState = (): CalendarState => {
@@ -30,6 +30,10 @@ function reducer(state: CalendarState, action: CalendarAction): CalendarState {
       return { ...state, currentMonth: subMonths(state.currentMonth, 1), direction: 'prev' };
     case 'CLICK_DATE':
       if (state.phase === 'IDLE') {
+        // If clicking the exactly selected single date again, unselect it for better UX
+        if (state.startDate && state.endDate && isSameDay(state.startDate, action.date) && isSameDay(state.endDate, action.date)) {
+          return { ...state, phase: 'IDLE', startDate: null, endDate: null, hoverDate: null, direction: 'none' };
+        }
         return { ...state, phase: 'SELECTING_END', startDate: action.date, endDate: null, hoverDate: null, direction: 'none' };
       }
       if (state.phase === 'SELECTING_END') {
