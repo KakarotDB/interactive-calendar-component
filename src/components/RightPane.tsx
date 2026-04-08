@@ -20,6 +20,8 @@ export function RightPane({ state, dispatch }: Props) {
     void height;
   }, [state.currentMonth]);
 
+  const animClass = state.direction === 'next' ? styles.flipUp : state.direction === 'prev' ? styles.flipDown : '';
+
   return (
     <div className={styles.pane}>
       <div className={styles.notesContainer}>
@@ -35,7 +37,9 @@ export function RightPane({ state, dispatch }: Props) {
             <button className={styles.btn} onClick={() => dispatch({ type: 'NEXT_MONTH' })}><ChevronRight size={20}/></button>
           </div>
         </header>
-        <Grid state={state} dispatch={dispatch} />
+        <div key={state.currentMonth.getTime()} className={`${styles.gridWrapper} ${animClass}`}>
+          <Grid state={state} dispatch={dispatch} />
+        </div>
       </div>
     </div>
   );

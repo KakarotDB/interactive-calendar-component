@@ -1,4 +1,4 @@
-import { isSameMonth, isSameDay, format, isWithinInterval, isBefore } from 'date-fns';
+import { isSameMonth, isSameDay, format, isWithinInterval, isBefore, parseISO } from 'date-fns';
 import { getCalendarDays } from '../utils/date';
 import { CalendarState, CalendarAction } from '../types';
 import styles from './Grid.module.css';
@@ -15,11 +15,9 @@ export function Grid({ state, dispatch }: Props) {
 
   const checkInRange = (date: Date) => {
     if (!state.startDate) return false;
-    
     if (state.endDate) {
       return isWithinInterval(date, { start: state.startDate, end: state.endDate });
     }
-    
     if (state.hoverDate) {
       const s = isBefore(state.startDate, state.hoverDate) ? state.startDate : state.hoverDate;
       const e = isBefore(state.startDate, state.hoverDate) ? state.hoverDate : state.startDate;
@@ -29,8 +27,12 @@ export function Grid({ state, dispatch }: Props) {
   };
 
   const hasNote = (date: Date) => {
-    const key = format(date, 'yyyy-MM-dd');
-    return !!state.notes[key];
+    // Check if the date falls within ANY of the saved notes' ranges
+    return state.notes.some(note => {
+      const start = parseISO(note.startStr);
+      const end = parseISO(note.endStr);
+      return isWithinInterval(date, { start, end });
+    });
   };
 
   return (
@@ -41,12 +43,12 @@ export function Grid({ state, dispatch }: Props) {
           const isSelected = (state.startDate && isSameDay(date, state.startDate)) || (state.endDate && isSameDay(date, state.endDate));
           const inRange = checkInRange(date);
           const isMuted = !isSameMonth(date, state.currentMonth);
+          const dateHasNote = hasNote(date);
           
           let cls = styles.cell;
           if (isSelected) cls += ` ${styles.selected}`;
           else if (inRange) cls += ` ${styles.inRange}`;
           if (isMuted && !isSelected) cls += ` ${styles.muted}`;
-          if (hasNote(date)) cls += ` ${styles.hasNote}`;
 
           return (
             <div 
@@ -55,7 +57,8 @@ export function Grid({ state, dispatch }: Props) {
               onClick={() => dispatch({ type: 'CLICK_DATE', date })}
               onMouseEnter={() => dispatch({ type: 'HOVER_DATE', date })}
             >
-              {format(date, 'd')}
+              <span className={styles.dayNum}>{format(date, 'd')}</span>
+              {dateHasNote && !isSelected && <div className={styles.noteIndicator}></div>}
             </div>
           );
         })}

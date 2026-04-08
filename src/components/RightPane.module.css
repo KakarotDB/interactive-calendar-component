@@ -30,6 +30,7 @@
   padding: 2.5rem;
   display: flex;
   flex-direction: column;
+  perspective: 1000px;
 }
 
 .header {
@@ -37,6 +38,8 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+  position: relative;
+  z-index: 10;
 }
 
 .title {
@@ -66,4 +69,43 @@
 
 .btn:hover {
   background: var(--bg-color);
+}
+
+/* Page Flip Animations */
+.gridWrapper {
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+  transform-origin: top center;
+  background: white; /* Ensure background hides lines behind it during rotation */
+}
+
+.flipUp {
+  animation-name: flipUpAnim;
+}
+
+.flipDown {
+  animation-name: flipDownAnim;
+}
+
+@keyframes flipUpAnim {
+  0% {
+    opacity: 0;
+    transform: rotateX(-30deg) translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg) translateY(0);
+  }
+}
+
+@keyframes flipDownAnim {
+  0% {
+    opacity: 0;
+    transform: rotateX(30deg) translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg) translateY(0);
+  }
 }

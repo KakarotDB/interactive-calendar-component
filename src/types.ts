@@ -1,6 +1,13 @@
 export type ViewState = 'CALENDAR' | 'NOTES';
 export type SelectionPhase = 'IDLE' | 'SELECTING_START' | 'SELECTING_END';
 
+export interface CalendarNote {
+  id: string;
+  startStr: string;
+  endStr: string;
+  text: string;
+}
+
 export interface CalendarState {
   currentMonth: Date;
   view: ViewState;
@@ -8,7 +15,8 @@ export interface CalendarState {
   startDate: Date | null;
   endDate: Date | null;
   hoverDate: Date | null;
-  notes: Record<string, string>; // Key: "YYYY-MM-DD" or "YYYY-MM-DD_YYYY-MM-DD"
+  notes: CalendarNote[];
+  direction: 'next' | 'prev' | 'none';
 }
 
 export type CalendarAction = 
@@ -19,4 +27,5 @@ export type CalendarAction =
   | { type: 'CLEAR_SELECTION' }
   | { type: 'OPEN_NOTES' }
   | { type: 'CLOSE_NOTES' }
-  | { type: 'SAVE_NOTE'; key: string; text: string };
+  | { type: 'ADD_NOTE'; note: CalendarNote }
+  | { type: 'REMOVE_NOTE'; id: string };
