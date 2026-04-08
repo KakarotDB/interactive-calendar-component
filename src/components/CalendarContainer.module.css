@@ -15,22 +15,23 @@
 .container::before {
   content: '';
   position: absolute;
-  top: 0;
+  top: -2px;
   left: 0;
   right: 0;
-  height: 28px;
+  height: 30px;
   background: repeating-linear-gradient(
     to right,
     transparent,
     transparent 14px,
-    #b0a89f 14px,
-    #cfc8c0 18px,
-    #b0a89f 22px,
+    #8c8273 14px,
+    #fcfcfc 16px,
+    #cfc8c0 19px,
+    #5c554b 22px,
     transparent 22px,
     transparent 36px
   );
   z-index: 10;
-  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+  filter: drop-shadow(0 4px 3px rgba(44, 40, 37, 0.3));
 }
 
 /* The holes of the spiral binding */
@@ -41,11 +42,12 @@
   left: 0;
   right: 0;
   height: 14px;
-  /* Dark holes cut through the white paper revealing the background */
+  /* Darker holes with inner shadow illusion */
   background: repeating-radial-gradient(
     circle at 18px 7px,
-    #2c2825 0px,
-    #2c2825 6px,
+    #1a1715 0px,
+    #2c2825 5px,
+    rgba(44, 40, 37, 0.8) 6px,
     transparent 7px,
     transparent 36px
   );

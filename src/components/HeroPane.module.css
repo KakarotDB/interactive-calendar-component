@@ -8,7 +8,19 @@
   background-position: center 30%;
   position: relative;
   overflow: hidden;
-  border-bottom: 2px solid var(--border-light);
+}
+
+/* Torn paper edge mask at the bottom of the hero image */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; /* Overlap slightly to prevent gaps */
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 16' preserveAspectRatio='none'%3E%3Cpath d='M0,16 L0,0 C10,12 15,2 25,8 C35,14 40,2 50,7 C60,12 65,4 75,9 C85,14 90,2 100,8 L100,16 Z' fill='%23fcfcfc'/%3E%3C/svg%3E");
+  background-size: 150px 100%;
+  z-index: 5;
 }
 
 @media (min-width: 768px) {

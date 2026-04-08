@@ -30,7 +30,7 @@ body {
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -38,10 +38,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d4cfc4;
-  border-radius: 4px;
+  background: rgba(140, 130, 115, 0.2);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #b5afa0;
+  background: rgba(140, 130, 115, 0.4);
 }

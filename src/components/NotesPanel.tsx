@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { format, parseISO, isWithinInterval } from 'date-fns';
+import { useState } from 'react';
+import { format, parseISO } from 'date-fns';
 import { Trash2, Check } from 'lucide-react';
 import { CalendarState, CalendarAction } from '../types';
 import styles from './NotesPanel.module.css';
@@ -77,9 +77,15 @@ export function NotesPanel({ state, dispatch }: Props) {
           <div className={styles.addNoteSection}>
             <textarea 
               className={styles.textarea}
-              placeholder={`Add a note for ${selectionTitle}...`}
+              placeholder={`Add a note for ${selectionTitle}... (Cmd/Ctrl + Enter to save)`}
               value={text}
               onChange={(e) => setText(e.target.value)}
+              onKeyDown={(e) => {
+                if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+                  e.preventDefault();
+                  handleAddNote();
+                }
+              }}
             />
             <div className={styles.actions}>
               <button 
