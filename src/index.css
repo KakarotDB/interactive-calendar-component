@@ -1,0 +1,23 @@
+:root {
+  --font-sans: system-ui, -apple-system, sans-serif;
+  --bg-color: #f8f9fa;
+  --text-main: #1a1a1a;
+  --text-muted: #6c757d;
+  --theme-color: #ff6b6b; /* Default, will be dynamic */
+  --border-light: #e9ecef;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--bg-color);
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}

@@ -1,0 +1,15 @@
+.hero {
+  flex: 0 0 35%;
+  background-color: var(--border-light);
+  background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  min-height: 200px;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    min-height: auto;
+  }
+}
