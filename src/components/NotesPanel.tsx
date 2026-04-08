@@ -12,7 +12,7 @@ export function NotesPanel({ state, dispatch }: Props) {
   const [text, setText] = useState('');
 
   const getKey = () => {
-    if (!state.startDate) return '';
+    if (!state.startDate) return 'general';
     if (!state.endDate || state.startDate.getTime() === state.endDate.getTime()) {
       return format(state.startDate, 'yyyy-MM-dd');
     }
@@ -22,35 +22,31 @@ export function NotesPanel({ state, dispatch }: Props) {
   const key = getKey();
 
   useEffect(() => {
-    if (state.view === 'NOTES' && key) {
-      setText(state.notes[key] || '');
-    }
-  }, [state.view, key, state.notes]);
+    setText(state.notes[key] || '');
+  }, [key, state.notes]);
 
   const handleSave = () => {
     dispatch({ type: 'SAVE_NOTE', key, text });
-    dispatch({ type: 'CLOSE_NOTES' });
   };
 
   const displayTitle = state.startDate && state.endDate && state.startDate.getTime() !== state.endDate.getTime()
     ? `${format(state.startDate, 'MMM d')} - ${format(state.endDate, 'MMM d')}`
-    : state.startDate ? format(state.startDate, 'MMM d, yyyy') : '';
+    : state.startDate ? format(state.startDate, 'MMM d, yyyy') : 'General Notes';
 
   return (
-    <div className={`${styles.overlay} ${state.view === 'NOTES' ? styles.visible : ''}`}>
+    <div className={styles.container}>
       <header className={styles.header}>
-        <h3 className={styles.title}>Notes for {displayTitle}</h3>
+        <h3 className={styles.title}>{displayTitle}</h3>
       </header>
       <textarea 
         className={styles.textarea}
-        placeholder="Write something..."
+        placeholder="Write your memo here..."
         value={text}
         onChange={(e) => setText(e.target.value)}
-        autoFocus={state.view === 'NOTES'}
+        onBlur={handleSave}
       />
       <div className={styles.actions}>
-        <button className={`${styles.btn} ${styles.btnSecondary}`} onClick={() => dispatch({ type: 'CLOSE_NOTES' })}>Cancel</button>
-        <button className={`${styles.btn} ${styles.btnPrimary}`} onClick={handleSave}>Save & Return</button>
+        <button className={styles.btnPrimary} onClick={handleSave}>Save</button>
       </div>
     </div>
   );
