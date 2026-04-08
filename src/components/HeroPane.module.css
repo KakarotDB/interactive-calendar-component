@@ -1,50 +1,55 @@
 .hero {
   width: 100%;
   height: 250px;
-  background-color: #1a1a1a;
-  /* Dark, elegant architectural image for a "wow" factor */
-  background-image: url('https://images.unsplash.com/photo-1600607686527-6fb886090705?w=1600&q=80');
+  background-color: var(--border-light);
+  /* Artistic, painted/organic aesthetic for the top of the physical calendar */
+  background-image: url('https://images.unsplash.com/photo-1578301978693-85fa9c026f43?w=1600&q=80');
   background-size: cover;
-  background-position: center 40%;
+  background-position: center 30%;
   position: relative;
   overflow: hidden;
+  border-bottom: 2px solid var(--border-light);
 }
 
 @media (min-width: 768px) {
   .hero {
-    height: 340px;
+    height: 380px;
   }
 }
 
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 100%);
+  background: linear-gradient(to top, rgba(44, 40, 37, 0.7) 0%, rgba(44, 40, 37, 0) 100%);
   display: flex;
   align-items: flex-end;
-  padding: 3rem 4rem;
+  padding: 3.5rem 5rem;
 }
 
 .todayDate {
   display: flex;
   flex-direction: column;
-  color: white;
-  text-shadow: 0 4px 16px rgba(0,0,0,0.6);
+  color: #fffefb;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.4);
   user-select: none;
 }
 
 .day {
-  font-size: 7rem;
-  font-weight: 300;
-  line-height: 0.85;
+  font-family: var(--font-serif);
+  font-size: 8rem;
+  font-weight: 500;
+  line-height: 0.8;
   letter-spacing: -0.05em;
+  font-style: italic;
 }
 
 .month {
+  font-family: var(--font-sans);
   font-size: 1.5rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.25em;
-  margin-left: 0.35rem;
-  opacity: 0.9;
+  letter-spacing: 0.3em;
+  margin-left: 0.25rem;
+  margin-top: 0.5rem;
+  opacity: 0.95;
 }

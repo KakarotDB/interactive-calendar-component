@@ -3,14 +3,15 @@
   flex-direction: column;
   width: 95vw;
   max-width: 1200px;
-  background: white;
-  border-radius: 12px 12px 24px 24px;
-  box-shadow: 0 40px 80px -20px rgba(0,0,0,0.5), 0 0 40px rgba(0,0,0,0.1);
+  background: #fcfcfc; /* Slightly off-white paper */
+  border-radius: 2px 2px 8px 8px; /* Less rounded, more like a physical cut */
+  box-shadow: 0 20px 40px -10px rgba(44, 40, 37, 0.15), 0 0 20px rgba(44, 40, 37, 0.05);
   margin: 4rem;
   position: relative;
-  padding-top: 28px;
+  padding-top: 32px;
 }
 
+/* The wire of the spiral binding */
 .container::before {
   content: '';
   position: absolute;
@@ -21,29 +22,32 @@
   background: repeating-linear-gradient(
     to right,
     transparent,
-    transparent 12px,
-    #a3a3a3 12px,
-    #d4d4d4 16px,
-    #a3a3a3 20px,
-    transparent 20px,
-    transparent 32px
+    transparent 14px,
+    #b0a89f 14px,
+    #cfc8c0 18px,
+    #b0a89f 22px,
+    transparent 22px,
+    transparent 36px
   );
   z-index: 10;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
 }
 
+/* The holes of the spiral binding */
 .container::after {
   content: '';
   position: absolute;
-  top: 16px;
+  top: 18px;
   left: 0;
   right: 0;
-  height: 12px;
+  height: 14px;
+  /* Dark holes cut through the white paper revealing the background */
   background: repeating-radial-gradient(
-    circle at 16px 6px,
-    #1a1a1a 0px,
-    #1a1a1a 5px,
-    transparent 6px,
-    transparent 32px
+    circle at 18px 7px,
+    #2c2825 0px,
+    #2c2825 6px,
+    transparent 7px,
+    transparent 36px
   );
   z-index: 9;
 }
@@ -52,6 +56,6 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-radius: 0 0 24px 24px;
-  background: white;
+  border-radius: 0 0 8px 8px;
+  background: #fcfcfc;
 }

@@ -21,40 +21,42 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border-radius: 12px;
-  font-size: 1.25rem;
+  border-radius: 4px; /* More square like physical dates */
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
   font-weight: 500;
   transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
-  background: #ffffff;
+  background: transparent;
   border: 1px solid transparent;
 }
 
 .cell:hover {
-  background: #f8fafc;
-  transform: scale(1.1);
+  background: #f0ebe1; /* Warmer hover state */
+  transform: scale(1.08);
   border-color: var(--border-light);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(44, 40, 37, 0.08);
   z-index: 5;
 }
 
 .muted {
-  color: var(--border-light);
+  color: #c9c1b5;
   font-weight: 400;
+  font-style: italic;
 }
 
 .selected {
   background: var(--theme-color) !important;
   color: white !important;
-  font-weight: 700;
-  transform: scale(1.1);
+  font-weight: 600;
+  transform: scale(1.08);
   border-color: var(--theme-color) !important;
-  box-shadow: 0 8px 20px rgba(234, 88, 12, 0.3) !important;
+  box-shadow: 0 8px 20px rgba(217, 74, 56, 0.3) !important;
   z-index: 10;
 }
 
 .inRange {
-  background: #fff7ed; /* Light warm amber matching theme */
+  background: rgba(217, 74, 56, 0.08);
 }
 
 .dayNum {

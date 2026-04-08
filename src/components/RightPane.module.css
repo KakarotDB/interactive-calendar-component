@@ -42,18 +42,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
   position: relative;
   z-index: 10;
   user-select: none;
 }
 
 .title {
-  font-size: 2.25rem;
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 600;
   margin: 0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   color: var(--text-main);
+  text-transform: capitalize;
 }
 
 .nav {
