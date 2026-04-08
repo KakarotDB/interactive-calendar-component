@@ -97,7 +97,7 @@
 
 .textarea:focus {
   border-color: var(--theme-color);
-  box-shadow: 0 0 0 4px rgba(244, 63, 94, 0.15);
+  box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.15);
 }
 
 .textarea::placeholder {
@@ -120,13 +120,13 @@
   background: var(--theme-color);
   color: white;
   transition: all 0.2s;
-  box-shadow: 0 4px 12px rgba(244, 63, 94, 0.3);
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3);
 }
 
 .btnPrimary:hover {
   opacity: 0.9;
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(244, 63, 94, 0.4);
+  box-shadow: 0 6px 16px rgba(234, 88, 12, 0.4);
 }
 
 .btnPrimary:disabled {

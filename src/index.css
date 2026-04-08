@@ -1,9 +1,9 @@
 :root {
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --bg-color: #0f172a; /* Deep slate background */
-  --text-main: #0f172a;
+  --bg-color: #0b0f14; /* Rich dark midnight carbon */
+  --text-main: #111827;
   --text-muted: #64748b;
-  --theme-color: #f43f5e; /* Rose color for a modern look */
+  --theme-color: #ea580c; /* Vibrant burnt orange / amber */
   --border-light: #e2e8f0;
 }
 
@@ -17,7 +17,7 @@ body {
   align-items: center;
   min-height: 100vh;
   /* Add subtle dotted pattern to background */
-  background-image: radial-gradient(#1e293b 1.5px, transparent 1.5px);
+  background-image: radial-gradient(#1f2937 1.5px, transparent 1.5px);
   background-size: 30px 30px;
 }
 

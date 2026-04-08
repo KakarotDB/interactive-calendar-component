@@ -30,8 +30,11 @@ function reducer(state: CalendarState, action: CalendarAction): CalendarState {
       return { ...state, currentMonth: subMonths(state.currentMonth, 1), direction: 'prev' };
     case 'CLICK_DATE':
       if (state.phase === 'IDLE') {
-        // If clicking the exactly selected single date again, unselect it for better UX
-        if (state.startDate && state.endDate && isSameDay(state.startDate, action.date) && isSameDay(state.endDate, action.date)) {
+        // If clicking ANY already selected date (either start or end of the current selection), unselect for better UX
+        const isAlreadySelected = (state.startDate && isSameDay(state.startDate, action.date)) || 
+                                  (state.endDate && isSameDay(state.endDate, action.date));
+                                  
+        if (isAlreadySelected) {
           return { ...state, phase: 'IDLE', startDate: null, endDate: null, hoverDate: null, direction: 'none' };
         }
         return { ...state, phase: 'SELECTING_END', startDate: action.date, endDate: null, hoverDate: null, direction: 'none' };

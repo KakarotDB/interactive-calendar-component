@@ -49,12 +49,12 @@
   font-weight: 700;
   transform: scale(1.1);
   border-color: var(--theme-color) !important;
-  box-shadow: 0 8px 20px rgba(244, 63, 94, 0.3) !important;
+  box-shadow: 0 8px 20px rgba(234, 88, 12, 0.3) !important;
   z-index: 10;
 }
 
 .inRange {
-  background: #fff1f2;
+  background: #fff7ed; /* Light warm amber matching theme */
 }
 
 .dayNum {
