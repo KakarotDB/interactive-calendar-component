@@ -1,54 +1,54 @@
 .container {
-  padding: 2rem;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
   height: 100%;
-  max-height: 500px;
+  max-height: 700px;
   overflow-y: auto;
 }
 
 .header {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .title {
-  font-size: 1.15rem;
+  font-size: 1.35rem;
   font-weight: 600;
   color: var(--theme-color);
   margin: 0;
 }
 
 .sectionTitle {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-muted);
-  margin: 1.5rem 0 0.75rem 0;
+  margin: 2rem 0 1rem 0;
   font-weight: 600;
 }
 
 .noteCard {
   background: white;
   border: 1px solid var(--border-light);
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
   position: relative;
 }
 
 .noteRange {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
-  margin-bottom: 0.5rem;
-  font-weight: 500;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
 }
 
 .noteText {
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: 1.05rem;
+  line-height: 1.6;
   color: var(--text-main);
   white-space: pre-wrap;
   margin: 0;
@@ -56,14 +56,15 @@
 
 .deleteBtn {
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  top: 0.75rem;
+  right: 0.75rem;
   background: none;
   border: none;
   color: var(--text-muted);
   cursor: pointer;
-  padding: 0.25rem;
-  border-radius: 4px;
+  padding: 0.35rem;
+  border-radius: 6px;
+  transition: all 0.2s;
 }
 
 .deleteBtn:hover {
@@ -74,21 +75,23 @@
 .textarea {
   width: 100%;
   border: 1px solid var(--border-light);
-  border-radius: 8px;
-  padding: 1rem;
-  resize: none;
+  border-radius: 10px;
+  padding: 1.25rem;
+  resize: vertical;
   background: #fff;
   font-family: inherit;
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: 1.05rem;
+  line-height: 1.6;
   color: var(--text-main);
   outline: none;
-  min-height: 100px;
+  min-height: 150px;
   transition: border-color 0.2s;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.01);
 }
 
 .textarea:focus {
   border-color: var(--theme-color);
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.15);
 }
 
 .textarea::placeholder {
@@ -98,15 +101,15 @@
 .actions {
   display: flex;
   justify-content: flex-end;
-  margin-top: 0.75rem;
+  margin-top: 1rem;
 }
 
 .btnPrimary {
-  padding: 0.5rem 1.25rem;
-  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
   border: none;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 1rem;
   cursor: pointer;
   background: var(--theme-color);
   color: white;
@@ -123,7 +126,8 @@
 }
 
 .emptyState {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--text-muted);
   font-style: italic;
+  line-height: 1.5;
 }
